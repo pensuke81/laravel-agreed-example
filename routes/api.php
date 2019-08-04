@@ -13,6 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/test/{number}', function (Request $request) {
+    return [
+        'data' => [
+            'string' => 'hello',
+            'number' => (int) $request->number,
+            'stringNumber' => (int) $request->number, //failed
+            // 'stringNumber' => $request->number,
+            'object' => [
+                'key' => 'value'
+            ],
+            'array' => [1, 2, 3]
+        ]
+    ];
 });
